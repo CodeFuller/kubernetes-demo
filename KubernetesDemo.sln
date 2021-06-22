@@ -7,6 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{07CFEDE2-BCE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicService", "src\PublicService\PublicService.csproj", "{41357165-DE6B-49DC-977D-848214F80093}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{EA297480-AAA7-4C62-B9B6-1B236F6F5CC9}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\ingress.yaml = deploy\ingress.yaml
+		deploy\kubedemo-public-service.yaml = deploy\kubedemo-public-service.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
