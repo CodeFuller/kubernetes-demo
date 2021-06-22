@@ -5,8 +5,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: kubedemo.dev.codefuller.net
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports:  '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:194189790374:certificate/e167a59e-474e-4078-a864-478666c757fb
+    external-dns.alpha.kubernetes.io/hostname: kubedemo.dev.codefuller.net
 spec:
   rules:
     - http:
