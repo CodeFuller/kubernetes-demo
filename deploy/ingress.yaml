@@ -6,14 +6,19 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports:  '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/listen-ports: '[ { "HTTP": 80 }, { "HTTPS":443 } ]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{ "Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301" } }'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:194189790374:certificate/e167a59e-474e-4078-a864-478666c757fb
     external-dns.alpha.kubernetes.io/hostname: kubedemo.dev.codefuller.net
 spec:
   rules:
     - http:
         paths:
-          - path: /*
-            backend:
-              serviceName: kubedemo-public-service
-              servicePort: 80
+         - path: /*
+           backend:
+             serviceName: ssl-redirect
+             servicePort: use-annotation
+         - path: /*
+           backend:
+             serviceName: kubedemo-public-service
+             servicePort: 80
